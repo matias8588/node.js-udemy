@@ -1,21 +1,49 @@
+const path = require('path');
 const express = require('express');
+const hbs = require('hbs');
 
 const app = express();
 
-app.get('', (req, res) => {
-  res.send('Hello express');
-});
+// Define path for express config
+const publicDirectory = path.join(__dirname, '../public');
+const viewsPath = path.join(__dirname, '../templates/views');
+const partialsPath = path.join(__dirname, '../templates/partials');
 
-app.get('/help', (req, res) => {
-  res.send('Help page');
+// Setup handlebars
+app.set('view engine', 'hbs');
+app.set('views', viewsPath);
+hbs.registerPartials(partialsPath);
+
+// Setup static
+app.use(express.static(publicDirectory));
+
+app.get('', (req, res) => {
+  res.render('index', {
+    title: 'Weather app',
+    name: 'Mati',
+  });
 });
 
 app.get('/about', (req, res) => {
-  res.send('About page');
+  res.render('about', {
+    title: 'About page',
+    name: 'Mati',
+  });
+});
+
+app.get('/help', (req, res) => {
+  res.render('help', {
+    title: 'Help page',
+    message: 'Search for help',
+  });
 });
 
 app.get('/weather', (req, res) => {
-  res.send('Weather page');
+  res.send({
+    location: 'Buenos Aires',
+    forecast: 'It is raining',
+    name: 'Mati',
+  });
 });
 
 app.listen(3000, () => {
