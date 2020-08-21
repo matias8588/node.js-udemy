@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node src/index.js",
+        "mongo-db": "mongod --dbpath /Users/matias.cejas/Documents/Mongo",
         "dev": "nodemon src/index.js"
     },
     "keywords": [],
