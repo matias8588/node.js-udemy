@@ -6,12 +6,14 @@
     "scripts": {
         "start": "node src/index.js",
         "mongo-db": "mongod --dbpath /Users/matias.cejas/Documents/Mongo",
-        "dev": "nodemon src/index.js"
+        "dev": "nodemon src/index.js",
+        "test": "jest"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@sendgrid/mail": "^7.2.4",
         "bcryptjs": "^2.4.3",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
@@ -22,6 +24,7 @@
         "validator": "^13.1.1"
     },
     "devDependencies": {
+        "jest": "^26.4.2",
         "nodemon": "^2.0.4"
     }
 }
